@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PortfolioII.Controllers
+namespace TimeDisplay.Controllers
 {
     public class HomeController : Controller
     {
