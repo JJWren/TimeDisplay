@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Current Date/Time</title>
+</head>
+
+<body onload="displayDateTime()">
+    <script>
+        function timeRefresh() {
+            let refresh = 1000;
+            mytime = setTimeout('displayDateTime()', refresh);
+        }
+        function displayDateTime() {
+            let x = new Date();
+            let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let date = x.toLocaleDateString();
+            let splitDate = date.split('/');
+            let engDate = `${month[splitDate[0]]} ${splitDate[1]}, ${splitDate[2]}`;
+            let time = x.toLocaleTimeString();
+            document.getElementById('day').innerHTML = day[x.getDay()];
+            document.getElementById('date').innerHTML = engDate;
+            document.getElementById('time').innerHTML = time;
+            timeRefresh();
+        }
+    </script>
+    <div class="d-flex flex-column justify-content-center">
+        <header class="d-flex flex-column text-center pt-5 pb-3">
+            <h4>The current time and date:</h4>
+        </header>
+        <section class="col-4 mx-auto text-center px-5 border border-dark bg-warning rounded text-dark shadow"
+            id="dateTime">
+            <h1 id="day"></h1>
+            <h2 id="date"></h2>
+            <h2 id="time"></h2>
+        </section>
+    </div>
+</body>
+
+</html>
